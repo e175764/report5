@@ -24,7 +24,22 @@ public class  Hero extends LivingThings {
      * getterメソッドと同等。生死をboolean表現しているためメソッド名をisDead()とした。
      * @return boolean
      */
-
+    public void attack(LivingThings opponent) {
+        int damage = (int) (Math.random() * getAttack() );
+        int critical=(int)(Math.random()*10);
+        if (!isDead()) {
+            if(critical<=4) {
+                System.out.printf("%sの攻撃！会心の一撃！！%sに%dのダメージを与えた！！\n",getName(), opponent.getName(), damage);
+                damage*=2;
+                opponent.wounded(damage);
+            }else if(damage==0) {
+                System.out.printf("%sの攻撃！,,,だが、%sは攻撃を回避した！\n",getName(), opponent.getName(), damage);
+            }else {
+                System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", getName(), opponent.getName(), damage);
+                opponent.wounded(damage);
+            }
+    }
+}
     /**
      * Enemyへ攻撃するメソッド。
      * attackに応じて乱数でダメージを算出し、hero.wounded()によりダメージ処理を実行。
