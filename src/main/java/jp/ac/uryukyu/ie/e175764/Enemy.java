@@ -12,7 +12,7 @@ public class Enemy extends LivingThings {
         int damage = (int) (Math.random() * getAttack() );
         int critical=(int)(Math.random()*10);
         if (!isDead()) {
-            if(critical<=3) {
+            if(critical<=3&&damage!=0) {
                 System.out.printf("%sの攻撃！痛恨の一撃！！%sに%dのダメージを与えた！！\n",getName(), opponent.getName(), damage);
                 damage*=2;
                 opponent.wounded(damage);

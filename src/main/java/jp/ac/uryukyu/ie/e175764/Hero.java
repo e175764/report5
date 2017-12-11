@@ -28,7 +28,7 @@ public class  Hero extends LivingThings {
         int damage = (int) (Math.random() * getAttack() );
         int critical=(int)(Math.random()*10);
         if (!isDead()) {
-            if(critical<=4) {
+            if(critical<=4&&damage!=0) {
                 System.out.printf("%sの攻撃！会心の一撃！！%sに%dのダメージを与えた！！\n",getName(), opponent.getName(), damage);
                 damage*=2;
                 opponent.wounded(damage);
